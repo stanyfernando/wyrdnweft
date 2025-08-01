@@ -62,14 +62,22 @@
             cursor: pointer;
             pointer-events: auto;
             -webkit-user-drag: none;
-            -khtml-user-drag: none;
-            -moz-user-drag: none;
-            -o-user-drag: none;
             user-drag: none;
         }
         
         .logo:hover {
             transform: rotate(360deg);
+        }
+        
+        .logo.rotate {
+            transform: rotate(360deg);
+        }
+        
+        /* Disable hover on touch devices */
+        @media (hover: none) {
+            .logo:hover {
+                transform: none;
+            }
         }
         
         .nav {
@@ -203,12 +211,25 @@
     </div>
 
     <script>
+        // Mobile logo rotation
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('click', function() {
+            this.classList.remove('rotate');
+            // Force reflow
+            this.offsetHeight;
+            this.classList.add('rotate');
+            
+            setTimeout(() => {
+                this.classList.remove('rotate');
+            }, 800);
+        });
+        
         // Disable right-click
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
         
-        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        // Disable dev tools shortcuts
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12' || 
                 (e.ctrlKey && e.shiftKey && e.key === 'I') ||
@@ -217,13 +238,12 @@
                 e.preventDefault();
             }
             
-            // Close modal with Escape key
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
         
-        // Disable text selection on drag
+        // Disable text selection
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
         });
@@ -236,7 +256,6 @@
             document.getElementById('aboutModal').style.display = 'none';
         }
         
-        // Close modal when clicking outside of it
         window.onclick = function(event) {
             const modal = document.getElementById('aboutModal');
             if (event.target === modal) {
