@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WYRD & WEFT</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/rRv5rQpV/favicon.jpg">
+    
+    <!-- Social Share Meta Tags -->
+    <meta property="og:title" content="WYRD & WEFT">
+    <meta property="og:description" content="fate & fabric">
+    <meta property="og:image" content="https://i.ibb.co/3mS9cGpp/social-share.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WYRD & WEFT">
+    <meta name="twitter:description" content="fate & fabric">
+    <meta name="twitter:image" content="https://i.ibb.co/3mS9cGpp/social-share.jpg">
+    
+    <meta name="description" content="fate & fabric">
+    
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/thegoodmonolith');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'TheGoodMonolith', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+            pointer-events: none;
+        }
+        
+        .logo {
+            max-width: 90vw;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            transition: transform 0.8s ease;
+            cursor: pointer;
+            pointer-events: auto;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+        
+        .logo:hover {
+            transform: rotate(360deg);
+        }
+        
+        .nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav a, .nav button {
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'TheGoodMonolith', monospace;
+            font-size: 16px;
+            letter-spacing: 1px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+        
+        .nav a:hover, .nav button:hover {
+            border-bottom: 1px solid #ffffff;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .modal-content h2 {
+            font-family: 'TheGoodMonolith', monospace;
+            font-size: 48px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'TheGoodMonolith', monospace;
+        }
+        
+        .close:hover {
+            opacity: 0.7;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                max-width: 85vw;
+                max-height: 60vh;
+            }
+            
+            .nav {
+                gap: 30px;
+            }
+            
+            .nav a, .nav button {
+                font-size: 14px;
+            }
+            
+            .modal-content h2 {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                max-width: 80vw;
+                max-height: 50vh;
+            }
+            
+            .nav {
+                gap: 20px;
+            }
+            
+            .nav a, .nav button {
+                font-size: 12px;
+            }
+            
+            .modal-content h2 {
+                font-size: 24px;
+                letter-spacing: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="https://i.ibb.co/cKhBSRRV/web-logo.png" alt="WYRD & WEFT" class="logo">
+    </div>
+    
+    <nav class="nav">
+        <a href="https://www.instagram.com/wyrdnweft/" target="_blank" rel="noopener">instagram</a>
+        <button onclick="openModal()">about</button>
+    </nav>
+    
+    <!-- Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>wip</h2>
+        </div>
+    </div>
+
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+                (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+            }
+            
+            // Close modal with Escape key
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Disable text selection on drag
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+        
+        function openModal() {
+            document.getElementById('aboutModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('aboutModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('aboutModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
