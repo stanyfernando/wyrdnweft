@@ -20,20 +20,21 @@
         body{background:#000;color:#fff;font-family:'Eingrantch Mono',monospace;min-height:100vh;display:flex;justify-content:center;align-items:center;user-select:none}
         .container{display:flex;align-items:center;gap:60px}
         .nav{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-        .nav a,.nav button{color:#fff;text-decoration:none;font-size:16px;letter-spacing:1px;background:none;border:none;cursor:pointer;position:relative;padding-left:15px;text-align:left}
+        .nav a,.nav button{color:#fff;text-decoration:none;font-size:16px;letter-spacing:1px;background:none;border:none;cursor:pointer;position:relative;padding-left:15px}
         .nav a::before,.nav button::before{content:'•';position:absolute;left:0}
         .nav a:hover,.nav button:hover{color:#666}
-        .logo{max-width:900px;max-height:900px;cursor:pointer;user-drag:none;-webkit-user-drag:none;transition:transform .8s ease}
+        .footer{font-size:12px;letter-spacing:1px;margin-top:30px;color:#666}
+        .logo{max-width:900px;cursor:pointer;user-drag:none;-webkit-user-drag:none;transition:transform .8s ease}
         .modal{display:none;position:fixed;z-index:1000;inset:0;background:#000}
         .modal-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:left;padding:40px;max-width:600px;max-height:80vh;overflow-y:auto}
         .modal-content h2{font-size:48px;letter-spacing:3px;text-align:center;margin-bottom:20px}
-        .modal-content img{width:100%;max-width:400px;height:auto;margin:0 auto 30px;display:block}
+        .modal-content img{width:100%;max-width:400px;margin:0 auto 30px;display:block}
         .modal-content p{font-size:14px;line-height:1.6;margin-bottom:15px}
         .modal-content em{color:#ccc}
         .close{position:absolute;top:20px;right:30px;color:#fff;font-size:30px;font-weight:bold;cursor:pointer}
         .close:hover{opacity:.7}
-        @media (max-width:768px){.container{flex-direction:column;gap:40px}.nav{flex-direction:row;gap:30px}.nav a,.nav button{font-size:14px;padding-left:0}.nav a::before,.nav button::before{display:none}.logo{max-width:85vw;max-height:60vh}.modal-content{padding:50px 20px 20px;max-width:95vw;max-height:90vh}.modal-content h2{font-size:28px;letter-spacing:1px;margin-bottom:25px}.modal-content img{max-width:280px;margin-bottom:25px}.modal-content p{font-size:13px;line-height:1.5;margin-bottom:18px}.close{top:15px;right:20px;font-size:25px}}
-        @media (max-width:480px){.container{gap:30px}.nav{gap:20px}.nav a,.nav button{font-size:12px}.logo{max-width:80vw;max-height:50vh}.modal-content{padding:45px 15px 15px;max-width:98vw}.modal-content h2{font-size:22px;letter-spacing:1px;margin-bottom:20px}.modal-content img{max-width:240px;margin-bottom:20px}.modal-content p{font-size:12px;line-height:1.4;margin-bottom:15px}.close{top:12px;right:15px;font-size:22px}}
+        @media (max-width:768px){.container{flex-direction:column;gap:40px}.nav{flex-direction:row;gap:30px;flex-wrap:wrap;justify-content:center}.nav a,.nav button{font-size:14px;padding-left:0}.nav a::before,.nav button::before{display:none}.footer{margin-top:15px;order:1;width:100%;text-align:center}.logo{max-width:85vw;max-height:60vh}.modal-content{padding:50px 20px 20px;max-width:95vw;max-height:90vh}.modal-content h2{font-size:28px;letter-spacing:1px;margin-bottom:25px}.modal-content img{max-width:280px;margin-bottom:25px}.modal-content p{font-size:13px;line-height:1.5;margin-bottom:18px}.close{top:15px;right:20px;font-size:25px}}
+        @media (max-width:480px){.container{gap:30px}.nav{gap:20px}.nav a,.nav button{font-size:12px}.footer{font-size:10px;margin-top:10px}.logo{max-width:80vw;max-height:50vh}.modal-content{padding:45px 15px 15px;max-width:98vw}.modal-content h2{font-size:22px;letter-spacing:1px;margin-bottom:20px}.modal-content img{max-width:240px;margin-bottom:20px}.modal-content p{font-size:12px;line-height:1.4;margin-bottom:15px}.close{top:12px;right:15px;font-size:22px}}
     </style>
 </head>
 <body>
@@ -41,7 +42,9 @@
         <img src="https://i.ibb.co/cKhBSRRV/web-logo.png" alt="WYRD & WEFT" class="logo">
         <nav class="nav">
             <a href="https://www.instagram.com/wyrdnweft/" target="_blank" rel="noopener">instagram</a>
+            <a href="https://www.tiktok.com/@wyrdnweft" target="_blank" rel="noopener">tiktok</a>
             <button onclick="openModal()">about</button>
+            <div class="footer">Ⓒ WYRD & WEFT 2025</div>
         </nav>
     </div>
     <div id="aboutModal" class="modal">
