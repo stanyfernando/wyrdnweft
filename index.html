@@ -41,10 +41,9 @@
     <div class="container">
         <img src="https://i.ibb.co/cKhBSRRV/web-logo.png" alt="WYRD & WEFT" class="logo">
         <nav class="nav">
-	    <a href="" target="_blank" rel="noopener">stock updates</a>
             <a href="https://www.instagram.com/wyrdnweft/" target="_blank" rel="noopener">instagram</a>
             <a href="https://www.tiktok.com/@wyrdnweft" target="_blank" rel="noopener">tiktok</a>
-            <a button onclick="openModal()">about</button></a>
+            <button onclick="openModal()">about</button>
             <div class="footer">Ⓒ WYRD & WEFT 2025</div>
         </nav>
     </div>
@@ -55,25 +54,51 @@
             <img src="https://www.thebonobopress.com/Issue1/img/theveddas/Fig112VeddaDrawings_2.jpg" alt="Vedda drawings shows a leopard, a dog and several men and women.">
             <p style="font-size: 11px; font-style: italic; color: #888; text-align: center; margin-bottom: 25px;">Vedda drawings shows a leopard, a dog and several men and women.</p>
             <p><strong>WYRD</strong> <em>(pronounced "werd")</em> – Old English for fate, but not the predetermined kind. This is the concept where the threads of old stories create new expressions, shaping what we create today. <strong>WEFT</strong> <em>(pronounced "weft")</em> – The horizontal threads that get woven through the vertical warp to create fabric. Without weft, there's no cloth – just loose, meaningless strands.</p>
-
-<p><strong>narrative over noise.</strong> We choose substance over superficiality, meaning over trends. This isn't about following what's popular – it's about stories that have shaped cultures for centuries, reimagined through design. We build for the long run, creating pieces that reward curiosity and deeper investigation rather than quick consumption.</p>
-
-<p><strong>WYRD & WEFT</strong> represents alternative heritage – taking authentic folklore, cultural artifacts, and historical imagery and presenting them through an underground, contemporary lens. This is for people who appreciate the stories behind symbols, who see meaning in the margins away from the mainstream. Whether you're wearing our pieces or contributing your own vision, you're part of a community that values <em>narrative over noise, substance over superficiality</em>. We're small, we're intentional, and every piece carries a story worth telling.</p>
+            <p><strong>narrative over noise.</strong> We choose substance over superficiality, meaning over trends. This isn't about following what's popular – it's about stories that have shaped cultures for centuries, reimagined through design. We build for the long run, creating pieces that reward curiosity and deeper investigation rather than quick consumption.</p>
+            <p><strong>WYRD & WEFT</strong> represents alternative heritage – taking authentic folklore, cultural artifacts, and historical imagery and presenting them through an underground, contemporary lens. This is for people who appreciate the stories behind symbols, who see meaning in the margins away from the mainstream. Whether you're wearing our pieces or contributing your own vision, you're part of a community that values <em>narrative over noise, substance over superficiality</em>. We're small, we're intentional, and every piece carries a story worth telling.</p>
         </div>
     </div>
     <script>
-        const logo=document.querySelector('.logo');
-        let isAnimating=false,canHover=true;
-        function rotateLogo(){if(isAnimating)return;isAnimating=true;canHover=false;logo.style.transform='rotate(360deg)';setTimeout(()=>{logo.style.transform='rotate(0deg)';isAnimating=false},800)}
-        logo.addEventListener('mouseenter',()=>canHover&&rotateLogo());
-        logo.addEventListener('mouseleave',()=>canHover=true);
-        logo.addEventListener('touchstart',e=>{e.preventDefault();rotateLogo()});
-        document.addEventListener('contextmenu',e=>e.preventDefault());
-        document.addEventListener('keydown',e=>{(['F12'].includes(e.key)||(e.ctrlKey&&e.shiftKey&&['I','J'].includes(e.key))||(e.ctrlKey&&e.key==='U'))&&e.preventDefault();e.key==='Escape'&&closeModal()});
-        document.addEventListener('selectstart',e=>e.preventDefault());
-        function openModal(){document.getElementById('aboutModal').style.display='block'}
-        function closeModal(){document.getElementById('aboutModal').style.display='none'}
-        window.onclick=e=>e.target.id==='aboutModal'&&closeModal()
+        const logo = document.querySelector('.logo');
+        
+        logo.addEventListener('mouseenter', () => {
+            logo.style.transform = 'rotate(360deg)';
+        });
+        
+        logo.addEventListener('mouseleave', () => {
+            logo.style.transform = 'rotate(0deg)';
+        });
+        
+        logo.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            logo.style.transform = 'rotate(360deg)';
+        });
+        
+        logo.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            logo.style.transform = 'rotate(0deg)';
+        });
+        
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (['F12'].includes(e.key) || (e.ctrlKey && e.shiftKey && ['I','J'].includes(e.key)) || (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+            }
+            if (e.key === 'Escape') closeModal();
+        });
+        document.addEventListener('selectstart', e => e.preventDefault());
+        
+        function openModal() {
+            document.getElementById('aboutModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('aboutModal').style.display = 'none';
+        }
+        
+        window.onclick = e => {
+            if (e.target.id === 'aboutModal') closeModal();
+        };
     </script>
 </body>
 </html>
