@@ -6,7 +6,7 @@
     <title>WYRD & WEFT</title>
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/rRv5rQpV/favicon.jpg">
     <meta property="og:title" content="WYRD & WEFT">
-    <meta property="og:description" content="fate & fabric">
+    <meta property="og:description" content="narrative over noise">
     <meta property="og:image" content="https://i.ibb.co/3mS9cGpp/social-share.jpg">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -21,7 +21,8 @@
         .nav{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
         .nav a{color:#fff;text-decoration:none;font-size:16px;letter-spacing:1px;position:relative;padding-left:15px}
         .nav button{color:#fff;background:none;border:none;font-family:inherit;font-size:16px;letter-spacing:1px;cursor:pointer;position:relative;padding-left:15px}
-        .nav a::before,.nav button::before{content:'•';position:absolute;left:0}
+        .nav span{color:#fff;font-size:16px;letter-spacing:1px;position:relative;padding-left:15px}
+        .nav a::before,.nav button::before,.nav span::before{content:'•';position:absolute;left:0}
         .nav a:hover,.nav button:hover{color:#666}
         .footer{font-size:12px;letter-spacing:1px;margin-top:30px;color:#666}
         .logo{max-width:900px;cursor:pointer;transition:transform .8s ease}
@@ -41,8 +42,8 @@
         @media (max-width:768px){
             .container{flex-direction:column;gap:40px}
             .nav{flex-direction:row;gap:30px;flex-wrap:wrap;justify-content:center}
-            .nav a,.nav button{font-size:14px;padding-left:0}
-            .nav a::before,.nav button::before{display:none}
+            .nav a,.nav button,.nav span{font-size:14px;padding-left:0}
+            .nav a::before,.nav button::before,.nav span::before{display:none}
             .footer{margin-top:15px;order:1;width:100%;text-align:center}
             .logo{max-width:85vw;max-height:60vh}
             .modal-content{padding:30px 20px;max-width:95vw;max-height:90vh}
@@ -55,7 +56,7 @@
         @media (max-width:480px){
             .container{gap:30px}
             .nav{gap:20px}
-            .nav a,.nav button{font-size:12px}
+            .nav a,.nav button,.nav span{font-size:12px}
             .footer{font-size:10px}
             .logo{max-width:80vw;max-height:50vh}
             .modal-content{padding:30px 15px;max-width:98vw}
@@ -71,7 +72,7 @@
     <div class="container">
         <img src="https://i.ibb.co/cKhBSRRV/web-logo.png" alt="WYRD & WEFT" class="logo" id="logo">
         <nav class="nav">
-            <a href="https://docs.google.com/document/d/1kSI5hNkhhi8Z88UQhZzQeJDuUkPvUkEV_3p7TGt5J1U/edit?usp=sharing" target="_blank" rel="noopener">stock update*</a>
+            <span>Launching 2026*</span>
             <a href="https://www.instagram.com/wyrdnweft/" target="_blank" rel="noopener">instagram</a>
             <a href="https://www.tiktok.com/@wyrdnweft" target="_blank" rel="noopener">tiktok</a>
             <button type="button" onclick="openModal()">information</button>
@@ -88,12 +89,8 @@
                 <button type="button" class="tab-button" onclick="showTab('legal')">legal</button>
             </div>
             <div id="about" class="tab-content active">
-                <img src="https://www.thebonobopress.com/Issue1/img/theveddas/Fig112VeddaDrawings_2.jpg" alt="Vedda drawings">
-                <p style="font-size:11px;font-style:italic;color:#888;text-align:center;margin-bottom:25px">Vedda drawings shows a leopard, a dog and several men and women.</p>
-                <p><strong>WYRD</strong> <em>(pronounced "werd")</em> – Old English for fate, but not the predetermined kind. This is the concept where the threads of old stories create new expressions, shaping what we create today. <strong>WEFT</strong> <em>(pronounced "weft")</em> – The horizontal threads that get woven through the vertical warp to create fabric. Without weft, there's no cloth – just loose, meaningless strands.</p>
-                <p><strong>narrative over noise.</strong> We choose substance over superficiality, meaning over trends. This isn't about following what's popular – it's about narratives that have shaped cultures for millennia, reimagined through threads and conversations. We create pieces that reward curiosity rather than quick consumption.</p>
-                <p><strong>WYRD & WEFT</strong> is a philosophy-driven alternative heritage brand utilising folklore and primeval expression, presenting them through an underground, contemporary lens. This is for people who appreciate the stories behind symbols, who find meaning away from the mainstream. Whether you're wearing our pieces or contributing your own vision, you're part of a community that values <em>narrative over noise, substance over superficiality</em>. We're small, we're intentional, and every piece carries a story worth telling.</p>
-                
+                <img src="" alt="">
+                <p style="margin-top:40px"><strong>WYRD & WEFT</strong> is a timed-exclusive brand that produces limited clothing inspired by elements of history and folklore.</p>
                 <p style="margin-top:30px;font-size:12px;color:#888">website made by <a href="https://stanyfernando.github.io/dosmode" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Stany</a>.</p>
             </div>
             <div id="contact" class="tab-content">
@@ -115,7 +112,6 @@
                 <p><strong>Life Happens</strong><br>If aliens invade, natural disasters strike, or the internet breaks permanently, we'll do our best but can't promise miracles. Sometimes the universe has other plans.</p>
                 <p><strong>Contact</strong><br>Questions? Email us at <a href="mailto:info@wyrdnweft.ltd" style="color:#fff;text-decoration:underline">info@wyrdnweft.ltd</a></p>
             </div>
-
         </div>
     </div>
 
