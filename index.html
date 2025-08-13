@@ -15,56 +15,439 @@
     <meta name="twitter:image" content="https://i.ibb.co/3mS9cGpp/social-share.jpg">
     <style>
         @import url('https://fonts.cdnfonts.com/css/eingrantch-mono');
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#000;color:#fff;font-family:'Eingrantch Mono',monospace;min-height:100vh;display:flex;justify-content:center;align-items:center}
-        .container{display:flex;align-items:center;gap:60px}
-        .nav{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-        .nav a{color:#fff;text-decoration:none;font-size:16px;letter-spacing:1px;position:relative;padding-left:15px}
-        .nav button{color:#fff;background:none;border:none;font-family:inherit;font-size:16px;letter-spacing:1px;cursor:pointer;position:relative;padding-left:15px}
-        .nav span{color:#fff;font-size:16px;letter-spacing:1px;position:relative;padding-left:15px}
-        .nav a::before,.nav button::before,.nav span::before{content:'•';position:absolute;left:0}
-        .nav a:hover,.nav button:hover{color:#666}
-        .footer{font-size:12px;letter-spacing:1px;margin-top:30px;color:#666}
-        .logo{max-width:900px;cursor:pointer;transition:transform .8s ease}
-        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:1000}
-        .modal-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:40px;max-width:600px;border:1px solid #fff;max-height:80vh;overflow-y:auto}
-        .modal-content img{width:100%;max-width:400px;margin:0 auto 30px;display:block}
-        .modal-content p{font-size:14px;line-height:1.6;margin-bottom:15px}
-        .modal-content em{color:#ccc}
-        .close{position:absolute;top:20px;right:30px;color:#fff;font-size:30px;font-weight:bold;cursor:pointer}
-        .close:hover{opacity:.7}
-        .tab-nav{display:flex;justify-content:center;gap:20px;margin-bottom:30px}
-        .tab-button{background:none;border:1px solid transparent;color:#fff;font-family:inherit;font-size:14px;letter-spacing:1px;padding:10px 15px;cursor:pointer}
-        .tab-button:hover{color:#ccc}
-        .tab-button.active{border-color:#666}
-        .tab-content{display:none}
-        .tab-content.active{display:block}
-        @media (max-width:768px){
-            .container{flex-direction:column;gap:40px}
-            .nav{flex-direction:row;gap:30px;flex-wrap:wrap;justify-content:center}
-            .nav a,.nav button,.nav span{font-size:14px;padding-left:0}
-            .nav a::before,.nav button::before,.nav span::before{display:none}
-            .footer{margin-top:15px;order:1;width:100%;text-align:center}
-            .logo{max-width:85vw;max-height:60vh}
-            .modal-content{padding:30px 20px;max-width:95vw;max-height:90vh}
-            .modal-content img{max-width:280px}
-            .modal-content p{font-size:13px}
-            .close{top:15px;right:20px;font-size:25px}
-            .tab-nav{gap:10px}
-            .tab-button{font-size:12px;padding:8px 12px}
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        @media (max-width:480px){
-            .container{gap:30px}
-            .nav{gap:20px}
-            .nav a,.nav button,.nav span{font-size:12px}
-            .footer{font-size:10px}
-            .logo{max-width:80vw;max-height:50vh}
-            .modal-content{padding:30px 15px;max-width:98vw}
-            .modal-content img{max-width:240px}
-            .modal-content p{font-size:12px}
-            .close{top:12px;right:15px;font-size:22px}
-            .tab-nav{gap:8px}
-            .tab-button{font-size:11px;padding:6px 10px}
+        
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Eingrantch Mono', monospace;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .nav a,
+        .nav button {
+            color: #fff;
+            text-decoration: none;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 16px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            padding-left: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav a::before,
+        .nav button::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+        }
+        
+        .nav a:hover,
+        .nav button:hover {
+            color: #666;
+        }
+        
+        .footer {
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-top: 30px;
+            color: #666;
+        }
+        
+        .logo {
+            max-width: 900px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.8s ease;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            border: 1px solid #fff;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-content img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 0 auto 30px;
+            display: block;
+        }
+        
+        .modal-content p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .modal-content em {
+            color: #ccc;
+        }
+        
+        .modal-content a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .close:hover {
+            opacity: 0.7;
+        }
+        
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-button {
+            background: none;
+            border: 1px solid transparent;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            letter-spacing: 1px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button:hover {
+            color: #ccc;
+        }
+        
+        .tab-button.active {
+            border-color: #666;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .order-instructions {
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            list-style-position: inside;
+        }
+        
+        .terms-checkbox {
+            margin-bottom: 25px;
+        }
+        
+        .terms-checkbox label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .terms-checkbox input {
+            cursor: pointer;
+        }
+        
+        .order-link-container {
+            display: none;
+            text-align: center;
+        }
+        
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        .size-table th,
+        .size-table td {
+            border: 1px solid #666;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .size-table th {
+            background: #111;
+        }
+        
+        .size-table td:first-child {
+            text-align: left;
+        }
+        
+        .size-notes {
+            margin-top: 25px;
+            font-size: 11px;
+            font-style: italic;
+            font-weight: bold;
+            color: #ccc;
+            list-style-position: inside;
+        }
+        
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 17px;
+            margin-top: 75px;
+        }
+        
+        .feature-item {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .feature-item img {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .feature-item h3 {
+            font-weight: bold;
+            margin: 8px 0 4px;
+        }
+        
+        .feature-item p {
+            margin: 0;
+        }
+        
+        .care-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .care-icons img {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-top: 75px;
+        }
+        
+        .section-title:first-of-type {
+            margin-top: 40px;
+        }
+        
+        .credit-text {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .legal-section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 40px;
+                padding: 20px;
+            }
+            
+            .nav {
+                flex-direction: row;
+                gap: 30px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav a,
+            .nav button {
+                font-size: 14px;
+                padding-left: 0;
+            }
+            
+            .nav a::before,
+            .nav button::before {
+                display: none;
+            }
+            
+            .footer {
+                margin-top: 15px;
+                order: 1;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .logo {
+                max-width: 85vw;
+                max-height: 60vh;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+                width: 95%;
+                max-height: 90vh;
+            }
+            
+            .modal-content img {
+                max-width: 240px;
+            }
+            
+            .modal-content p {
+                font-size: 13px;
+            }
+            
+            .close {
+                top: 15px;
+                right: 20px;
+                font-size: 25px;
+            }
+            
+            .tab-nav {
+                gap: 10px;
+            }
+            
+            .tab-button {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+            
+            .feature-item {
+                min-width: 200px;
+            }
+            
+            .size-table th,
+            .size-table td {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                gap: 30px;
+                padding: 15px;
+            }
+            
+            .nav {
+                gap: 20px;
+            }
+            
+            .nav a,
+            .nav button {
+                font-size: 12px;
+            }
+            
+            .footer {
+                font-size: 10px;
+            }
+            
+            .logo {
+                max-width: 80vw;
+                max-height: 50vh;
+            }
+            
+            .modal-content {
+                padding: 20px 15px;
+                width: 98%;
+            }
+            
+            .modal-content img {
+                max-width: 200px;
+            }
+            
+            .modal-content p {
+                font-size: 12px;
+            }
+            
+            .close {
+                top: 12px;
+                right: 15px;
+                font-size: 22px;
+            }
+            
+            .tab-nav {
+                gap: 8px;
+            }
+            
+            .tab-button {
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+            
+            .feature-item {
+                min-width: 100%;
+            }
+            
+            .size-table {
+                font-size: 10px;
+            }
+            
+            .size-table th,
+            .size-table td {
+                padding: 6px 2px;
+            }
+            
+            .section-title {
+                margin-top: 50px;
+            }
         }
     </style>
 </head>
@@ -72,109 +455,246 @@
     <div class="container">
         <img src="https://i.ibb.co/cKhBSRRV/web-logo.png" alt="WYRD & WEFT" class="logo" id="logo">
         <nav class="nav">
-            <span>Launching 2026*</span>
+            <button type="button" onclick="openModal('shop')">shop</button>
             <a href="https://www.instagram.com/wyrdnweft/" target="_blank" rel="noopener">instagram</a>
             <a href="https://www.tiktok.com/@wyrdnweft" target="_blank" rel="noopener">tiktok</a>
-            <button type="button" onclick="openModal()">information</button>
-            <div class="footer">Ⓒ WYRD & WEFT 2025</div>
+            <button type="button" onclick="openModal('info')">information</button>
+            <div class="footer">© WYRD & WEFT 2025</div>
         </nav>
     </div>
     
-    <div id="modal" class="modal">
+    <!-- Information Modal -->
+    <div id="infoModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal('info')">&times;</span>
             <div class="tab-nav">
-                <button type="button" class="tab-button active" onclick="showTab('about')">about</button>
-                <button type="button" class="tab-button" onclick="showTab('contact')">contact</button>
-                <button type="button" class="tab-button" onclick="showTab('legal')">legal</button>
+                <button type="button" class="tab-button active" onclick="showTab('info', 'about')">about</button>
+                <button type="button" class="tab-button" onclick="showTab('info', 'contact')">contact</button>
+                <button type="button" class="tab-button" onclick="showTab('info', 'legal')">legal</button>
             </div>
             <div id="about" class="tab-content active">
-                <img src="" alt="">
-                <p style="margin-top:40px"><strong>WYRD & WEFT</strong> is a timed-exclusive brand that produces limited clothing inspired by elements of history and folklore.</p>
-                <p style="margin-top:30px;font-size:12px;color:#888">website made by <a href="https://stanyfernando.github.io/dosmode" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Stany</a>.</p>
+                <p class="section-title"><strong>WYRD & WEFT</strong> is a timed-exclusive brand that produces limited clothing inspired by elements of history and folklore.</p>
+                <p class="credit-text">website made by <a href="https://stanyfernando.github.io/dosmode" target="_blank" rel="noopener">Stany</a>.</p>
             </div>
             <div id="contact" class="tab-content">
-                <p style="margin-top:40px">For general & order enquires please email us at:</p>
-                <p><a href="mailto:info@wyrdnweft.ltd" style="color:#fff;text-decoration:underline">info@wyrdnweft.ltd</a></p>
+                <p class="section-title">For general & order enquires please email us at:</p>
+                <p><a href="mailto:info@wyrdnweft.ltd">info@wyrdnweft.ltd</a></p>
             </div>
             <div id="legal" class="tab-content">
-                <p style="font-size:20px;font-weight:bold;margin-bottom:25px;text-align:center">Terms & Conditions / Privacy Policy</p>
-                <p><strong>Payment</strong><br>Full payment is required upfront via bank transfer only. After placing your order, you'll need to email or send your payment proof along with your invoice ID to confirm your purchase.</p>
-                <p><strong>Pre-Orders & Production</strong><br>All pieces are made-to-order through timed exclusive drops. Once we announce a drop, you have a limited timeframe to place your order. After that period closes, all orders go straight to production with no cancellations possible. Production timelines and delivery dates may vary depending on demand and material availability, but if we're running more than 2-3 weeks late from the promised delivery date, you get a full refund.</p>
-                <p><strong>Cancellations</strong><br>You can cancel your order before it's confirmed and sent to production. Once production starts, cancellations aren't possible since everything is printed per order.</p>
-                <p><strong>Shipping & Delivery</strong><br>We ship primarily within Sri Lanka. Depending on your location, additional shipping charges may apply - we'll let you know before processing. Any damage during delivery will be handled case by case, usually through courier insurance.</p>
-                <p><strong>Returns & Refunds</strong><br>Refunds are available only for customers within Sri Lanka. Items must be returned within 5 days of purchase with original tags and packaging intact. Pieces must be in resellable condition - no stains, odours, or damage. Return shipping costs are your responsibility.</p>
-                <p><strong>Sizing & Fit</strong><br>Size charts will be mentioned on the order forms in LK sizing. If you're unsure, contact us via email or Instagram DM before your order is confirmed - we're here to help you get the right fit.</p>
-                <p><strong>Your Responsibilities</strong><br>Double-check your delivery address and payment details. We're not responsible for orders sent to incorrect addresses or payments made to wrong account numbers.</p>
+                <p class="legal-section-title">Terms & Conditions / Privacy Policy</p>
+                <p><strong>Payment</strong><br>Once you place an order, an order confirmation with both order ID and bank details will be sent to you. Once you make a payment, please send us the payment proof with your relevant order ID to either our <a href="https://www.instagram.com/wyrdnweft/" target="_blank" rel="noopener">Instagram</a> or to <a href="mailto:info@wyrdnweft.ltd">info@wyrdnweft.ltd</a>.</p>
+                <p><strong>Pre-Orders & Production</strong><br>All pieces are made-to-order through timed exclusive drops. Once we announce a drop, you have a limited timeframe to place your order. After that period closes, all orders go straight to production with no cancellations possible. Production timelines and delivery dates may vary depending on demand and material availability.</p>
+                <p><strong>Cancellations</strong><br>Cancellations are possible before customer makes the payment - provide your full name as mentioned in the order form to our <a href="https://www.instagram.com/wyrdnweft/" target="_blank" rel="noopener">Instagram</a> or our email <a href="mailto:info@wyrdnweft.ltd">info@wyrdnweft.ltd</a>. If a payment has been made it's not possible to cancel your order as it will be processed and placed for production by our overseas partners.</p>
+                <p><strong>Shipping & Delivery</strong><br>Islandwide or overseas depending on the region, shipping charges will apply and vary. Once your order is done with production, a tracking number will be sent to your email address where you can keep track of your order. As for Sri Lankan customers, once your package arrives in Sri Lanka it will be processed and delivered to you via our domestic courier partner within 24-72 hours.<br><br>If your package gets lost or damaged during domestic delivery within Sri Lanka, contact us immediately via <a href="https://www.instagram.com/wyrdnweft/" target="_blank" rel="noopener">Instagram</a> or <a href="mailto:info@wyrdnweft.ltd">info@wyrdnweft.ltd</a> and we'll sort it out. Please include your full name and order ID in your message. For international orders, while this doesn't apply to you, feel free to reach out if any delivery issues occur.</p>
+                <p><strong>Pricing</strong><br>For Sri Lankan customers, shipping charges are included in the displayed price. For international orders, shipping charges will vary based on your location and will be calculated separately via our production partner.</p>
+                <p><strong>Returns & Refunds</strong><br>Returns and refunds are not possible at the moment. However, if our production partner sends you a defective or incorrect item, you will receive a full refund with no trouble.</p>
+                <p><strong>Order Accuracy</strong><br>Please double-check your size selection and order details before submitting your order form. You can request any changes after receiving your order confirmation but before making payment. Once payment is made, no changes are possible.</p>
+                <p><strong>Sizing & Fit</strong><br>Size charts will be mentioned on the order forms. If you're unsure, you can always check our size chart on the website.</p>
+                <p><strong>Your Responsibilities</strong><br>Double-check your delivery address, payment details, and size selection. We're not responsible for orders sent to incorrect addresses, payments made to wrong account numbers, or wrong sizes selected by the customer.</p>
                 <p><strong>Our Rights</strong><br>We reserve the right to refuse delivery on any order, with a full refund provided only if payment has been made. We may update these terms occasionally - continued use means you accept changes.</p>
-                <p><strong>Privacy</strong><br>We collect your info through Google Forms for order processing only. Your details are deleted after delivery completion and we don't sell or share your information with anyone.</p>
+                <p><strong>Privacy</strong><br>We collect your info through Google Forms for order processing & delivery purposes only. Your details are deleted after delivery completion and we don't sell or share your information with anyone.</p>
                 <p><strong>Intellectual Property</strong><br>Our designs draw inspiration from historical and cultural sources. While we respect traditional heritage, our specific interpretations are our creative work.</p>
                 <p><strong>Life Happens</strong><br>If aliens invade, natural disasters strike, or the internet breaks permanently, we'll do our best but can't promise miracles. Sometimes the universe has other plans.</p>
-                <p><strong>Contact</strong><br>Questions? Email us at <a href="mailto:info@wyrdnweft.ltd" style="color:#fff;text-decoration:underline">info@wyrdnweft.ltd</a></p>
+                <p><strong>Contact</strong><br>Questions? Email us at <a href="mailto:info@wyrdnweft.ltd">info@wyrdnweft.ltd</a>. Please include your full name and order ID (if available) in your message to help us assist you faster.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shop Modal -->
+    <div id="shopModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('shop')">&times;</span>
+            <div class="tab-nav">
+                <button type="button" class="tab-button active" onclick="showTab('shop', 'orderform')">order form</button>
+                <button type="button" class="tab-button" onclick="showTab('shop', 'sizechart')">size chart</button>
+                <button type="button" class="tab-button" onclick="showTab('shop', 'productinfo')">product info</button>
+            </div>
+            <div id="orderform" class="tab-content active">
+                <ul class="order-instructions">
+                    <li>Ensure to double check before submitting your information</li>
+                    <li>Your order cannot be cancelled once it has been confirmed</li>
+                    <li>Always check the size guide before choosing size</li>
+                </ul>
+                <div class="terms-checkbox">
+                    <label>
+                        <input type="checkbox" id="acceptTerms" onchange="toggleOrderLink()">
+                        I understand and accept the terms above
+                    </label>
+                </div>
+                <div id="orderLinkContainer" class="order-link-container">
+                    <a href="https://forms.gle/np8rSYZqapDiH2Lk9" target="_blank" rel="noopener">
+                        <button type="button" class="tab-button active">Click here to place your order</button>
+                    </a>
+                </div>
+            </div>
+            <div id="productinfo" class="tab-content">
+                <center>
+                    <h2 class="section-title">About</h2>
+                    <p>Comfort and style is the name of the game for these custom boxy t-shirts. Their relaxed fit along with the dropped shoulders add that modern aesthetic that can blend into any occasion. All shirts are made with 100% airlume, ring-spun and combed cotton for extra softness. (Athletic Heather is 90% / 10% airlume combed and ring-spun cotton / polyester)</p>
+
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <img src="https://printify.com/cdn-cgi/image/width=32,quality=100,format=avif/https://images.printify.com/api/catalog/59e0e608b8e7e33b2f5b1e90/icons_v4_outlined_1_cotton.svg" width="32" height="32" style="filter:invert(1)" alt="Fiber composition">
+                            <h3>Fiber composition</h3>
+                            <p>Solid colors are 100% cotton; Athletic Heather is 90% cotton, 10% polyester.</p>
+                        </div>
+                        <div class="feature-item">
+                            <img src="https://printify.com/cdn-cgi/image/width=32,quality=100,format=avif/https://images.printify.com/api/catalog/59e0ea55b8e7e34c675732f9/icons_v4_outlined_37_shoulder_tape.svg" width="32" height="32" style="filter:invert(1)" alt="Dropped shoulders">
+                            <h3>Dropped shoulders</h3>
+                            <p>Dropped shoulders give the garment a relaxed fit and feel.</p>
+                        </div>
+                        <div class="feature-item">
+                            <img src="https://printify.com/cdn-cgi/image/width=32,quality=100,format=avif/https://images.printify.com/api/catalog/5cc8697f5c22f9001a325224/icon_stitching.svg" width="32" height="32" style="filter:invert(1)" alt="Double needle stitching">
+                            <h3>Double needle sleeve, neck and bottom hem</h3>
+                            <p>The garment is sewn around the edges with a wide double topstitch, making it long-lasting and durable.</p>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title">Care instructions</h2>
+                    <p>Machine wash: cold (max 30C or 90F); Non-chlorine: bleach as needed; Tumble dry: low heat; Iron, steam or dry: low heat; Do not dryclean.</p>
+                    <br>
+                    <div class="care-icons">
+                        <img src="https://printify.com/cdn-cgi/image/width=16,quality=100,format=avif/https://images.printify.com/api/catalog/64e620148d819215ad01a13f" width="16" height="16" style="filter:invert(1)" alt="">
+                        <img src="https://printify.com/cdn-cgi/image/width=16,quality=100,format=avif/https://images.printify.com/api/catalog/64e620028d819215ad01a139" width="16" height="16" style="filter:invert(1)" alt="">
+                        <img src="https://printify.com/cdn-cgi/image/width=16,quality=100,format=avif/https://images.printify.com/api/catalog/64e61f528d819215ad01a127" width="16" height="16" style="filter:invert(1)" alt="">
+                        <img src="https://printify.com/cdn-cgi/image/width=16,quality=100,format=avif/https://images.printify.com/api/catalog/64e61f1a8d819215ad01a11e" width="16" height="16" style="filter:invert(1)" alt="">
+                        <img src="https://printify.com/cdn-cgi/image/width=16,quality=100,format=avif/https://images.printify.com/api/catalog/64e61eef8d819215ad01a115" width="16" height="16" style="filter:invert(1)" alt="">
+                    </div>
+                </center>
+            </div>
+            <div id="sizechart" class="tab-content">
+                <table class="size-table">
+                    <tr>
+                        <th>SIZE</th>
+                        <th>WIDTH (W)</th>
+                        <th>HEIGHT (H)</th>
+                    </tr>
+                    <tr>
+                        <td>XS (in)</td>
+                        <td>18.75"</td>
+                        <td>26.25"</td>
+                    </tr>
+                    <tr>
+                        <td>S (in)</td>
+                        <td>19.75"</td>
+                        <td>27.25"</td>
+                    </tr>
+                    <tr>
+                        <td>M (in)</td>
+                        <td>20.75"</td>
+                        <td>27.75"</td>
+                    </tr>
+                    <tr>
+                        <td>L (in)</td>
+                        <td>22.75"</td>
+                        <td>28.75"</td>
+                    </tr>
+                    <tr>
+                        <td>XL (in)</td>
+                        <td>24.75"</td>
+                        <td>29.75"</td>
+                    </tr>
+                    <tr>
+                        <td>2XL (in)</td>
+                        <td>26.75"</td>
+                        <td>30.25"</td>
+                    </tr>
+                    <tr>
+                        <td>3XL (in)</td>
+                        <td>28.75"</td>
+                        <td>31.25"</td>
+                    </tr>
+                </table>
+                <ul class="size-notes">
+                    <li>all measurements in INCHES</li>
+                    <li>measurements shown are for Oversized Boxy Tee</li>
+                    <li>measurements are approximate and may vary by up to 1" inch.</li>
+                </ul>
             </div>
         </div>
     </div>
 
     <script>
         const logo = document.getElementById('logo');
-        const modal = document.getElementById('modal');
+        const modals = {
+            info: document.getElementById('infoModal'),
+            shop: document.getElementById('shopModal')
+        };
         
         // Logo rotation
-        logo.addEventListener('mouseenter', () => {
-            logo.style.transform = 'rotate(360deg)';
-        });
-        logo.addEventListener('mouseleave', () => {
-            logo.style.transform = 'rotate(0deg)';
-        });
-        logo.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            logo.style.transform = 'rotate(360deg)';
-        });
-        logo.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            logo.style.transform = 'rotate(0deg)';
-        });
+        function setupLogoRotation() {
+            const events = [
+                { type: 'mouseenter', action: () => logo.style.transform = 'rotate(360deg)' },
+                { type: 'mouseleave', action: () => logo.style.transform = 'rotate(0deg)' },
+                { type: 'touchstart', action: (e) => { e.preventDefault(); logo.style.transform = 'rotate(360deg)'; } },
+                { type: 'touchend', action: (e) => { e.preventDefault(); logo.style.transform = 'rotate(0deg)'; } }
+            ];
+            
+            events.forEach(({ type, action }) => logo.addEventListener(type, action));
+        }
         
         // Modal functions
-        function openModal() {
-            modal.style.display = 'block';
+        function openModal(type) {
+            if (modals[type]) {
+                modals[type].style.display = 'block';
+            }
         }
         
-        function closeModal() {
-            modal.style.display = 'none';
+        function closeModal(type) {
+            if (modals[type]) {
+                modals[type].style.display = 'none';
+            }
         }
         
-        function showTab(tabName) {
-            // Hide all tabs
-            const tabs = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-button');
+        function showTab(modalType, tabName) {
+            const modal = modals[modalType];
+            if (!modal) return;
+            
+            const tabs = modal.querySelectorAll('.tab-content');
+            const buttons = modal.querySelectorAll('.tab-button');
             
             tabs.forEach(tab => tab.classList.remove('active'));
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+            const targetTab = document.getElementById(tabName);
+            if (targetTab) {
+                targetTab.classList.add('active');
+                event.target.classList.add('active');
+            }
         }
         
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
+        function toggleOrderLink() {
+            const checkbox = document.getElementById('acceptTerms');
+            const linkContainer = document.getElementById('orderLinkContainer');
+            linkContainer.style.display = checkbox.checked ? 'block' : 'none';
+        }
         
-        // ESC to close modal
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
+        function setupEventListeners() {
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                Object.values(modals).forEach(modal => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+            
+            // ESC to close modals
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    Object.values(modals).forEach(modal => {
+                        modal.style.display = 'none';
+                    });
+                }
+            });
+            
+            // Disable right-click
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+        }
         
-        // Disable right-click
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
+        // Initialize
+        setupLogoRotation();
+        setupEventListeners();
     </script>
 </body>
 </html>
